@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-model</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="value">
+		<p>{{value}}</p>
+	</div>
+	<!-- v-model的修饰符
+	v-model.lazy 只有在input输入框发生一个blur时才触已就是失去焦点,
+	v-model.trim 将用户输入的前后的空格去掉
+	v-model.number 将用户输入的字符串转换成number -->
+
+	<script>
+		new Vue({
+			el: "#app",
+			data:{
+				value:0
+			}
+		})
+	</script>
+</body>
+</html>

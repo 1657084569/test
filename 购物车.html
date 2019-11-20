@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+        <input type="checkbox" v-model="myFlag" @change="change">
+        <ul>
+            <li v-for="data in dataList">
+                <input type="checkbox" :value="data" v-model="isList" @change="handleData">
+                {{data}}
+            </li>
+        </ul>
+        总金额:{{sumCount}}
+	</div>
+
+	<script>
+		new Vue({
+            el: "#app",
+            data:{
+                dataList:[
+                    {name:"skdjfskldfjskldjfkslj",price:8,count:2},
+                    {name:"sdsakslfjkkdsjlj",price:10,count:3},
+                    {name:"ssdlfjleojfkslj",price:5,count:4}
+                    ],
+                isList:[],
+                isFlag:false,
+                myFlag:false
+            },
+            methods:{
+                change(){
+                    if(this.myFlag){
+                        this.isList = this.dataList
+                    }else{
+                        this.isList = []
+                    }
+                },
+                handleData(){
+                    if(this.isList.length == this.dataList.length){
+                        this.myFlag = true
+                    }else{
+                        this.myFlag = false
+                    }
+                }
+            },
+            computed: {
+                sumCount(){
+                    var sum = 0
+                    for(var i in this.isList){
+                        sum += this.isList[i].price * this.isList[i].count
+                    }
+                    return sum
+                }
+            }
+        })
+	</script>
+</body>
+</html>

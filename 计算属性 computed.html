@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+	<div id="app" >
+		<input type="text" v-model="number">
+		<ul>
+			<li v-for="data in chandle">
+				{{data}}
+			</li>
+		</ul>
+	</div>
+<!--模糊查询-->
+	<script>
+		new Vue({
+			el: "#app",
+			data:{
+				dataList:["aaa","bbb","kasdjk","eoiasdkj"],
+				number:""
+			},
+			computed:{
+				chandle(){
+					return this.dataList.filter(item => item.indexOf(this.number) > -1)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mixins</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <button @click="methodChange">点击</button>
+        <button @click="funA()">对象</button>
+    </div>
+
+<!--    mixins就是让vue实例外面定义的对象跟vue实例混在一起-->
+    <script>
+        function change() {
+            console.log('这是minins混入')
+        }
+        var obj = {
+            methods:{
+                funA(){
+                    console.log("这是funA")
+                },
+                funB(){
+                    console.log("这是funB")
+                }
+            }
+        }
+        var obj1 = {
+            methods:{
+                fun1(){
+                    console.log("这是fun1")
+                },
+                fun1(){
+                    console.log("这是fun1")
+                }
+            }
+        }
+        new Vue({
+            el: "#app",
+            data:{
+
+            },
+            methods:{
+                methodChange:change
+            },
+            mixins: [obj,obj1],
+
+        })
+    </script>
+</body>
+</html>
